@@ -276,6 +276,18 @@ body{
     overflow: hidden; 
     white-space: nowrap; 
     text-overflow: ellipsis;
+    position: relative;
+}
+
+.mainDiv .leftSection .menuSec>span>a .dot{
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    background-color: red;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
 }
 
 .mainDiv .leftSection .otherSec{

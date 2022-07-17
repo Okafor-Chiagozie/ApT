@@ -16,6 +16,8 @@ if($_REQUEST['action'] === 'accept'){
 
     $sql2 = "DELETE FROM notify WHERE User_email = '$email';";
     $sqlInsert2 = mysqli_query($db_connection, $sql2);
+
+    echo "user_dashboard.php";
     
 
     mysqli_close($db_connection);    

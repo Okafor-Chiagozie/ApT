@@ -71,7 +71,7 @@ if($_SESSION["status"] !== "leader"){
                             </span>
                         <?php
                             }else{ 
-                                $sqlCheck = "SELECT * FROM notify WHERE User_email = '{$allUsers['Email']}' ";
+                                $sqlCheck = "SELECT * FROM notify WHERE User_email = '{$allUsers['Email']}' AND Team_name = '{$userDetails['Team_name']}' ";
                                 $sqlCheckInsert = mysqli_query($db_connection, $sqlCheck);
 
                                 if(mysqli_num_rows($sqlCheckInsert)){

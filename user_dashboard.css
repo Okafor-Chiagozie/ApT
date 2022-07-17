@@ -80,13 +80,23 @@
     font-size: small;
 }
 
-.mainDiv .mainSection .firstSec .container .plusIcon{
-    padding: 20px;
+.mainDiv .mainSection .firstSec .container .teamIcon{
+    padding: 10px;
+    width: 30%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
     margin: 10px;
+}
+
+.mainDiv .mainSection .firstSec .container .teamIcon>span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.mainDiv .mainSection .firstSec .container>hr{
+    width: 100%;
+    border: 1px solid var(--backgroundGrey);
 }
 /* First Section inner_section ends =====================*/
 
@@ -145,13 +155,13 @@
 
 
 @media only screen and (max-width: 700px){
-    .mainDiv .mainSection .firstSec .container .teamBox{
+    .mainDiv .mainSection .firstSec .container .teamBox, .mainDiv .mainSection .firstSec .container .teamIcon{
         width: 45%;
     }
 }
 
 @media only screen and (max-width: 450px){
-    .mainDiv .mainSection .firstSec .container .teamBox{
+    .mainDiv .mainSection .firstSec .container .teamBox, .mainDiv .mainSection .firstSec .container .teamIcon{
         width: 90%;
     }
 }

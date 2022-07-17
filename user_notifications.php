@@ -77,19 +77,31 @@ include("user_header.php");
 
         <script>
 
-            function accept(num, email, id, teamName){
+            async function accept(num, email, id, teamName){
                 var container = document.getElementsByClassName("container")
                 container[num].style.display = "none"
 
-                $.post(`./asynchro.php?action=accept&email=${email}&id=${id}&teamName=${teamName}`,(res)=>{
-                        if(res == "successful"){
-                            
-                            console.log("Working")
-                        }
-                    })
+                var result = await fetch(`asynchro.php?action=accept&email=${email}&id=${id}&teamName=${teamName}`);
+                var req = await result.text();
+                // console.log(req);
 
-                    window.location.href = 'user_dashboard.php'
+                window.location.href = req.toString();
+
             }
+            
+            // function accept(num, email, id, teamName){
+            //     var container = document.getElementsByClassName("container")
+            //     container[num].style.display = "none"
+
+            //     $.post(`./asynchro.php?action=accept&email=${email}&id=${id}&teamName=${teamName}`,(res)=>{
+            //             if(res == "successful"){
+                            
+            //                 console.log("Working")
+            //             }
+            //         })
+
+            //         window.location.href = 'user_dashboard.php'
+            // }
 
 
             function decline(num, email, id){

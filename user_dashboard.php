@@ -60,6 +60,12 @@ include("user_header.php");
                         <p><i class="fa-solid fa-star"></i></p>
 
                     </section>
+
+                    <section class="teamIcon outside">
+                       <span> <?= (mysqli_num_rows($sqlTeamInsert) + 1) ?> &nbsp;&nbsp;Members&nbsp;&nbsp; <i class="fa fa-users"></i> </span>
+                    </section>
+
+                    <hr>
                         
 
                     <?php
@@ -85,9 +91,7 @@ include("user_header.php");
                     <?php } ?>
                     
                     
-                    <section class="plusIcon outside">
-                        <i class="fa fa-plus"></i>
-                    </section>
+                    
 
 
                     <?php

@@ -46,6 +46,11 @@ if((!isset($_SESSION["userEmail"]) || !isset($_SESSION["status"])) && ($_SESSION
     
     <div class="mainDiv">
 
+    <?php 
+        $sqlNotifyCheck = "SELECT * FROM notify WHERE User_email = '{$userDetails['Email']}' ";
+        $sqlNotifyCheckInsert = mysqli_query($db_connection, $sqlNotifyCheck);
+    ?>
+
         <header class="mainHeader" id="mainHeader">
 
             <section class="logoSec">
@@ -73,13 +78,7 @@ if((!isset($_SESSION["userEmail"]) || !isset($_SESSION["status"])) && ($_SESSION
                 <section class="iconSec">
                     <a href="user_task.php" class="icon outside" title="Tasks"><i class="fas fa-tasks"></i></a>
 
-                    <?php 
-                    $sqlNotify = "SELECT * FROM notify WHERE User_email = '{$userDetails['Email']}' ORDER BY Id DESC ";
-                    $sqlNotifyInsert = mysqli_query($db_connection, $sqlNotify);
-
-                    ?>
-
-                    <a href="user_notifications.php" class="icon outside" title="Notifications"><i class="fas fa-bell"></i> <span>.</span></a>
+                    <a href="user_notifications.php" class="icon outside" title="Notifications"><i class="fas fa-bell"></i> <?php if(mysqli_num_rows($sqlNotifyCheckInsert)){?> <span>.</span> <?php } ?> </a>
 
                     <a href="user_profile.php" class="profilePic outside">
                         <img src="user_pictures/<?= $userDetails["Picture"] ?>" alt="Profile picture">
@@ -115,14 +114,18 @@ if((!isset($_SESSION["userEmail"]) || !isset($_SESSION["status"])) && ($_SESSION
                     echo ' <span class="inside"> <a href="user_task.php" ><i class="fa fa-tasks"></i> Task</a></span> ';
                 }else{
                     echo ' <span> <a href="user_task.php" ><i class="fa fa-tasks"></i> Task</a></span> ';
-                }
+                } 
+
+                ?>
                 
-                if($_SESSION["userMenu"] == "notifications"){
-                    echo ' <span class="inside"> <a href="user_notifications.php" ><i class="fas fa-bell"></i> Notifications</a></span> ';
-                }else{
-                    echo ' <span> <a href="user_notifications.php" ><i class="fas fa-bell"></i> Notifications</a></span> ';
-                }
+                <?php
+                if($_SESSION["userMenu"] == "notifications"){ ?>
+                    <span class="inside"> <a href="user_notifications.php" > <i class="fas fa-bell"></i> Notifications <?php if(mysqli_num_rows($sqlNotifyCheckInsert)){?> <span class="dot">.</span> <?php } ?> </a></span>
+                <?php }else{ ?>
+                    <span> <a href="user_notifications.php" > <i class="fas fa-bell"></i> Notifications <?php if(mysqli_num_rows($sqlNotifyCheckInsert)){?> <span class="dot">.</span> <?php } ?> </a></span>
+                <?php } ?>
                 
+                <?php
                 if($userDetails["Winner"] == "1"){
                     if($_SESSION["userMenu"] == "winner"){
                         echo ' <span class="inside"> <a href="user_winnerPage.php" ><i class="fa-solid fa-award"></i> Winners</a></span> ';
