@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $The_year = explode("-", $dateDetails["Startdate"])[0];
             $Start_month = explode("-", $dateDetails["Startdate"])[1];
-            $End_month = explode("-", $dateDetails["Enddate"])[2];
+            $End_month = explode("-", $dateDetails["Enddate"])[1];
 
             // Team Leader
             $sqlLeader = "SELECT Firstname,Lastname FROM user_login WHERE Tl = '1' AND Team_name = '$Team_name' ";
